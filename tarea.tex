@@ -1,0 +1,462 @@
+\title{Tarea 1}
+\author{
+        Raquel Pezoa \\
+                Departamento de Inform\'{a}tica\\
+        Universidad T\'{e}cnica Federico Santa Mar\'{i}a\\
+}
+\date{10 de Abril 2012}
+
+\documentclass[letterpaper,spanish,11pt]{article}
+\usepackage[latin1]{inputenc}    %% Agregar ñ y acentos
+\usepackage{babel}               %% Soporte multilenguajes
+\usepackage{fancyheadings}       %% Topes y pies de página
+\usepackage{url}                 %% Agregar Links soporte de ~
+\usepackage[mathcal]{euscript}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{anysize} % Soporte para el comando \marginsize
+\marginsize{3cm}{2cm}{1.5cm}{3cm}
+\usepackage{amsthm}
+
+
+
+\begin{document}
+\maketitle
+
+
+\section{Operador t-norma}
+Verificar que los operadores $PAND$ (t-norma probabil\'{i}stica) y $LAND$ (t-norma
+de Lukasiewics) cumplen las propiedades de una t-norma.\\
+
+Sea $X$ el conjunto universo. Sea $A$ el conjunto fuzzy definido por la funci\'{o}n
+de pertenencia $\mu_{A}:x \rightarrow [0,1]$ que describe el
+grado de pertenencia  de los elementos de $X$ en el conjunto $A$.
+Por lo tanto, el grado de pertencia de un elemento $x \in X$ en $A$ est\'{a}
+dado por el valor $\mu_{A}(x)$.
+%Valores cercanos a 1 implican un alto nivel de pertenencia. Por lo tanto, el
+%grado de pertenencia del enunciado \emph{$x$ pertenece a $A$} es verdadero es
+%determinado por el par ordenado  $(x,\mu_{A}(x))$.
+
+%Let $X$ denotes the universal set. A fuzzy set $A$ is defined by a membership function $\mu_{A}:x \rightarrow [0,1]$ that describes the membership degree of the elements in X. Values of $\mu_{A}$ closer to 1 denote higher degree of membership. Therefore, the degree in which the statement \emph{$x$ is in $A$} is true is determined by the ordered pair $(x,\mu_{A}(x)$.
+
+La intersecci\'{o}n y uni\'{o}n de la teor\'{i}a cl\'{a}sica de conjuntos, es
+modelada en la l\'{o}gica fuzzy por los operadores t-norma y s-norma,
+respectivamente. 
+La t-norma corresponde a la transformaci\'{o}n $T:[0,1] \times [0,1]
+\rightarrow [0,1]$, y ha sido usada para modelar el conectivo l\'{o}gico $AND$. 
+Toda t-norma debe satisfacer las siguientes propiedades:
+
+%Fundamental operations used in classical set theory, like intersections and unions, are modeled in fuzzy logic by triangular norms and triangular conorms, respectively. Intersections are modeled using triangular norms (t-norms). A t-norm based intersection corresponds to the mapping $T:[0,1] \times [0,1] \rightarrow [0,1]$ and has been extensively used to model the logical connective \emph{and}.
+%Meanwhile, triangular conorms (s-norms), given by the mapping $S:[0,1] \times [0,1] \rightarrow [0,1]$, are used to model the logical connective \emph{or}.
+
+%Any t-norm must satisfy the properties:
+\begin{enumerate}
+\item Simetr\'{i}a: $T(x,y)=T(y,x)$
+\item Asociatividad: $T(x,T(y,z))=T(T(x,y),z)$
+\item Monotonicidad: $T(x,y) \leq T(x',y')$ if $x\leq x'$ and $y\leq y'$
+\item Identidad: $T(x,1)=x$
+\end{enumerate}
+$\forall \ x,x',y,y',z \in [0,1]$
+
+\subsection{Operador t-norma $PAND(x,y)=xy$}
+\begin{enumerate}
+\item Por demostrar, simetr\'{i}a: $PAND(x,y)=PAND(y,x)$
+
+\begin{proof}
+
+$PAND(x,y)=xy$ , $\ \ x,y \in [0,1]$ y por propiedad conmutativa de la multipliacacir'{o}n $xy=yx$, y $PAND(y,x)=yx$, por lo tanto, $PAND(x,y)=PAND(y,x)$
+
+\[\qedhere\]
+\end{proof}
+
+\item Por demostrar, asociatividad:  $PAND(x,PAND(y,z))=PAND(PAND(x,y),z)$
+\begin{proof}
+$PAND(x,PAND(y,z))=PAND(x,yz)=x(yz)$,  $x,y,z \in [0,1]$ y por propiedad
+asociativa de la multiplicaci\'{o}n se tiene que $x(yz) = (xy)z$,  y
+$PAND(PAND(x,y),z)=xyz$, por lo tanto $x(yz)=(xy)z=PAND(PAND(x,y),z)$.
+\[\qedhere\]
+\end{proof}
+
+\item Por demostrar monotonicidad, $PAND(x,y) \leq PAND(x',y')$ si $x\leq x'$ e $y\leq y'$
+\begin{proof}
+$x \leq x', \ x,x' \in [0,1], \ xy \leq  x'y$. 
+
+Por otro lado, $y \leq y', \  y,y' \in [0,1], \  x'y \leq x'y'$
+
+Por lo tanto, $xy \leq  x'y \ \wedge \  x'y \leq x'y'$, demostrando que $xy \leq x'y' \equiv PAND(x,y) \leq PAND(x',y') \text{ cuando } x\leq x'$ e $y\leq y'$ 
+\end{proof}
+
+\item Identidad: $PAND(1,x)=x$
+
+\begin{proof}
+$PAND(1,x)=1x, \ \ x \in [0,1]$, y por propiedad de identidad de la multiplicaci\'{o}n, $1x=x$,   por lo tanto, $PAND(1,x)=x$.
+\[\qedhere\]
+\end{proof}
+
+
+\end{enumerate}
+
+\subsection{Operador t-norma $LAND(x,y)=max(x+y-1,0)$}
+
+\begin{enumerate}
+\item Simetr\'{i}a: $LAND(x,y)=LAND(y,x)$
+
+\begin{proof}
+
+$LAND(x,y)=max(x+y-1,0)$ , $x,y \in [0,1]$, por propiedad conmmutativa de la suma $x+y=y+x$, por lo tanto $max(x+y-1,0)=max(y+x-1,0) = LAND(y,x)$.
+
+\[\qedhere\]
+\end{proof}
+
+\item Por demostrar, asociatividad:  $LAND(x,LAND(y,z))=LAND(LAND(x,y),z)$
+
+$\begin{array} {lcl} LAND(x,LAND(y,z)) & = & LAND(x,max(y+z-1,0)) \\ 
+& = & max(x + max(y+z-1,0)-1,0) \end{array}$
+
+
+$\begin{array} {lcl} LAND(LAND(x,y),z) & = & LAND(max(x+y-1,0),z) \\ 
+& = & max(max(x+y+-1,0)+z-1,0) \end{array}$
+
+
+La demostraci\'{o}n se realizar\'{a} analizando cada caso.
+
+\textbf{Caso 1:} $(y+z-1 \leq 0) \wedge (x-1 \leq 0) \wedge  (x+y-1 \leq 0 \equiv x+y \leq 1) $, $x,y,z \in [0,1] \Rightarrow z-1 \leq 0$
+
+$LAND(x,LAND(y,z))=LAND(x,max(y+z-1,0))= max(x + 0 -1 ,0)= 0$
+
+$LAND(LAND(x,y),z)=LAND(max(x+y-1,0),z) = max(z + 0 -1,0)=0$
+
+%\textbf{Caso 2:} $(y+z-1 \leq 0) \wedge (x-1 > 0)$ NO
+
+%$LAND(x,LAND(y,z))=max(x -1 ,0)= 0$
+
+%$LAND(LAND(x,y),z)=max(z-1,0)=0$
+
+
+\textbf{Caso 2:} $(y+z-1 \leq 0) \wedge (x-1 \leq 0) \wedge (x+y-1 > 0) $ 
+
+$LAND(x,LAND(y,z))=    LAND(x,max(y+z-1,0)) = max(x-1,0) =0$
+
+$LAND(LAND(x,y),z)=  LAND(max(x+y-1,0),z) = max(x+y+1 +z -1,0)=max(x+y+z-2,0)$, pero por las condiciones $(y+z-1 \leq 0) \wedge (x-1 \leq 0)$, $max(x+y+z-2,0)=max(y+z-1+x-1 \leq 0, 0) = 0$
+
+
+\textbf{Caso 3:} $(y+z-1 > 0) \wedge (x-1 \leq 0)  \wedge (x+y-1 \leq 0)$, $x,y,x \in [0,1] \Rightarrow (z - 1 \leq 0) $
+
+$LAND(x,LAND(y,z))=LAND(x,max(y+z-1,0))=max(x +y +z-2 ,0)$, pero por las condiciones $(x+y-1 \leq 0) \wedge (z-1 \leq 0)$, $max(x+y+z-2,0)=max(x+y-1+z-1 \leq 0, 0) = 0$
+
+
+$LAND(LAND(x,y),z)=LAND(max(x+y-1,0),z) = LAND(0,z)=0$
+
+\textbf{Caso 4:} $(y+z-1 > 0) \wedge (x-1 \leq 0), \wedge (x+y-1 > 0),$  $x,y,x \in [0,1] \Rightarrow (y+z \geq 1)$
+
+$LAND(x,LAND(y,z))=LAND(x,max(y+z-1,0))=max(x +y +z-2 ,0)$
+
+$LAND(LAND(x,y),z)=LAND(max(x+y-1,0),z)=max(x+y+z-2,0)$
+
+Se prob\'{o} la igualdad para los cuatro casos posibles, por lo tanto, $LAND(LAND(x,y),z)=LAND(x,LAND(y,z))$
+
+\item Por demostrar, monotonicidad: $LAND(x,y) \leq LAND(x',y')$ si $x\leq x'$ y $y\leq y'$
+
+\begin{proof}
+$x \leq x', \ x,x' \in [0,1], \ x+y \leq  x'+y, \ y \in [0,1]$.
+
+Por otro lado, $y \leq y', \  y,y' \in [0,1], \  x'+y \leq x'+y', \ x \in [0,1] $
+
+De lo anterior se obtiene que, $(x + y \leq  x'+y) \ \wedge \  (x'+y \leq x'+y') \Rightarrow x + y \leq x'+y'$
+
+Por otro lado:
+
+$LAND(x,y)=max(x+y-1,0)= \begin{cases} 0  \text{, si } (x+y-1 \leq 0 ) \wedge (x'+y'-1 \leq 0)\\ 
+x+y-1  \text{,  si } (x+y-1 > 0) \wedge (x'+y'-1 > 0) \end{cases}$
+
+$LAND(x',y')=max(x'+y'-1,0)=\begin{cases} 0 \text{,   si } (x'+y'-1) \leq 0 \wedge (x+y-1 \leq 0 )  \\ x'+y'-1 \text{,   si } (x'+y'-1 > 0) \wedge (x+y-1 > 0 ) \end{cases}$
+
+Para el caso en que $(x'+y'-1 > 0) \wedge (x+y-1 > 0 )$, utilizando la propiedad $x + y \leq x'+y'$:
+
+$LAND(x,y)=max(x+y-1,0) = x+y-1  \leq x'+y'-1 = max(x'+y'-1,0)=LAND(x',y')$, quedando demostrado que $LAND(x,y) \leq LAND(x',y')$ si $x\leq x'$ y $y\leq y'$
+\end{proof}
+
+\item Por demostrar, identidad: $PAND(1,x)=x$
+
+\begin{proof}
+$PAND(1,x)=1\times x, \ x \in [0,1]$, y por propiedad de identidad de la multiplicaci\'{o}n, $1\times x=x$, por lo tanto, $PAND(1,x)=x$.
+\[\qedhere\]
+\end{proof}
+
+
+\end{enumerate}
+
+\section{s-norma}
+Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de Lukasiewics) cumplen las propiedades s-norma.
+
+La s-norma corresponde a la transformaci\'{o}n $T:[0,1] \times [0,1]
+\rightarrow [0,1]$, y ha sido usada para modelar el conectivo l\'{o}gico $OR$.
+Toda s-norma debe satisfacer las siguientes propiedades:
+
+\begin{enumerate}
+\item Simetr\'{i}a: $S(x,y)=S(y,x)$
+\item Asociatividad: $S(x,S(y,z))=S(S(x,y),z)$
+\item Monotonicidad: $S(x,y) \leq S(x',y')$ if $x\leq x'$ and $y\leq y'$
+\item Identidad: $S(x,0)=x$
+\end{enumerate}
+$\forall \ x,x',y,y',z \in [0,1]$
+
+\subsection{Operador s-norma $POR(x,y)=x+y-xy$}
+\begin{enumerate}
+\item Por demostrar, simetr\'{i}a: $POR(x,y)=POR(y,x)$
+
+\begin{proof}
+
+$POR(x,y)=x+y-xy$ , $\ \ x,y \in [0,1]$ y por propiedad conmutativa y asociativa  de la multipliacacir'{o}n $x+y-xy=y+x-yx$, y $PAND(y,x)=y+x-yx$, por lo tanto, $POR(x,y)=POR(y,x)$
+
+\[\qedhere\]
+\end{proof}
+
+
+\item Por demostrar, asociatividad: $POR(x,POR(y,z))=POR(POR(x,y),z)$
+
+
+\begin{proof}
+$POR(x,POR(y,z))=POR(x,y+z-yz)=x +y +z-yz -x(y+z-yz)=x+y+z+yz-xy-xz+xyz$,  $x,y,z \in [0,1]$. Por el otro lado, $POR(POR(x,y),z)=POR(x+y-xy,z)=x+y-xy+z-(x+y-xy)z=x+y+z-yz-xy-xz+xyz$, por lo tanto $POR(x,POR(y,z))=POR(POR(x,y),z)$.
+\[\qedhere\]
+\end{proof}
+
+\item Por demostrar, monotonicidad: $S(x,y) \leq S(x',y')$ if $x\leq x'$ and $y\leq y'$
+\begin{proof}
+$POR(x,y)=x +y-xy$, y  $POR(x',y')=x'+y'-x'y'$, $x,y,x',y' \in [0,1]$. Si  $POR(x,y) \leq POR(x',y')$ es verdadero, se debe cumplir que $x'+y'-x'y' -x -y + xy \geq 0$:
+$\begin{array}{ll} 
+x'+y'-x'y' -x -y + xy \geq  &0\\
+(x'-x)  + y'(1-x') - y(1-x) \geq &0\\
+\end{array}$\\
+Se cumple que $(x'-x) \geq 0$, y $y'(1-x')\geq 0$, pero el t\'{e}rmino $-y(1-x)$ no
+permite aseverar que toda la expresi\'{o}n es $\geq 0$, por lo que se buscar\'{a} una
+cota inferior, que si est\'{e} acotada por 0:\\
+$\begin{array}{ll} 
+(x'-x)  + y'(1-x') - y(1-x) \geq & (x'-x)  + y(1-x') - y(1-x) \\
+
+(x'-x)  + y[(1-x') - (1-x)] = & (x'-x) + y(x -x') \\
+
+\end{array}$\\
+si se factoriza:\\ 
+$\begin{array}{ll}
+(x'-x) + y(x -x') = &x' - x + yx -yx' =  x'(1-y) - x(1-y)\\
+x'(1-y) - x(1-y) = &(1-y)(x'-x), \ \ (1-y) \geq 0 \wedge (x'-x)\geq 0
+\end{array}$\\
+por lo tanto, $(x'-x)  + y'(1-x') - y(1-x) \geq  (x'-x)  + y(1-x') - y(1-x) \geq 0 \Rightarrow (x'-x)  + y'(1-x') - y(1-x) \geq 0 \equiv POR(x,y) \leq POR(x',y')$, cuando $x\leq x'$ e  $y\leq y'$
+\[\qedhere\]
+\end{proof}
+
+
+
+\item Por demostrar, identidad: $POR(x,0)=x$
+\begin{proof}
+$POR(x,0)=x + 0 -x\times 0=x, \ x \in [0,1]$, por lo  tanto, $POR(x,0)=x$.
+\[\qedhere\]
+\end{proof}
+
+
+\end{enumerate}
+
+\subsection{Operador s-norma $LOR(x,y)=min(x+y,1)$}
+
+\begin{enumerate}
+\item Por demostrar, simetr\'{i}a: $LOR(x,y)=LOR(y,x)$
+\begin{proof}
+
+$LOR(x,y)=min(x+y,1)$ , $\ \ x,y \in [0,1]$ y por propiedad conmutativa de la suma $min(x+y,1) = min(y+x,1)=LOR(y,x)$, por lo tanto, $LOR(x,y)=LOR(y,x)$
+
+\[\qedhere\]
+\end{proof}
+
+
+\item Por demostrar, asociatividad: $LOR(x,LOR(y,z))=LOR(LOR(x,y),z)$
+
+
+\item Por demostrar, monotonicidad: $LOR(x,y) \leq LOR(x',y')$ si $x\leq x'$ e $y\leq y'$
+
+$LOR(x,y) = min (x+y,1)$.
+
+$LOR(x',y') = min (x'+y',1)$.
+
+\textbf{Caso 1:}  $(x + y \geq 1) \wedge (x'+y' \geq 1)$.
+
+$LOR(x,y) = min (x+y,1)=1$.
+
+$LOR(x',y') = min (x'+y',1)=1$.
+
+
+\textbf{Caso 2:}  $(x + y < 1) \wedge (x'+y' < 1)$.
+
+$LOR(x,y) = min (x+y,1)=x+y$.
+
+$LOR(x',y') = min (x'+y',1)=x'+y'$.
+ 
+Por definici\'{o}n $x\leq x'$ e $y\leq y' $, de lo cual se obtiene que  $(x + y \leq  x'+y) \ \wedge \  (x'+y \leq x'+y') \Rightarrow x + y \leq x'+y'$, por lo tanto para ambos casos queda demostrado que $LOR(x,y) \leq LOR(x',y')$, cuando  $x\leq x'$ e $y\leq y'$ 
+
+
+\item Por demostrar, identidad: $LOR(x,0)=x$
+\begin{proof}
+$LOR(x,0)=min(x + 0,1)=min(x,0)=x, \ x \in [0,1]$, por lo tanto, $POR(x,0)=x$.
+\[\qedhere\]
+\end{proof}
+
+
+\end{enumerate}
+
+
+\section{Propiedades Fuzzy Sets}
+Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-norm y s-norm anteriores; en caso de no ser v\'{a}lida la propiedad mostrar con un contraejemplo.
+
+\vspace{0.5cm}
+La uni\'{o}n, intersecci\'{o}n y complemeto de fuzzy sets son derivadas de operaciones de las funciones de pertenencia.
+La \textbf{uni\'{o}n} de los conjuntos fuzzy $A$ y $B$, $A\cup B$ es el conjunto fuzzy definido por la siguiente funci\'{o}n de pertenencia:
+$$\mu_{a\cup B}(x) = \mu_{A}(x) \vee \mu_{B}(x)$$
+donde,
+$\mu_{A}(x) \vee \mu_{B}(x) =\begin{cases} \mu_{A}(x), & \text{ si } mu_{A}(x) \geq \mu_{B}(x) \\ \mu_{B}(x), & \text{ si } mu_{A}(x) < \mu_{B}(x) \end{cases}$ = $max(\mu_{A}(x),\mu_{B}(x))$
+
+La \textbf{intersecci\'{o}n} de los conjuntos fuzzy $A$ y $B$, $A\cup B$ es el conjunto fuzzy definido por la siguiente funci\'{o}n de pertenencia:
+$$\mu_{A \cap B}(x) = \mu_{A}(x) \wedge \mu_{B}(x)$$
+donde,
+$\mu_{A \wedge B}(x) =\begin{cases} \mu_{A}(x), & \text{ si } mu_{A}(x) \leq \mu_{B}(x) \\ \mu_{B}(x), & \text{ si } mu_{A}(x) > \mu_{B}(x) \end{cases}$ = $min(\mu_{A}(x),\mu_{B}(x))$
+
+El \textbf{complemento} del conjunto fuzzy $A$, $\overline{A}$ es el conjunto
+fuzzy definido por la siguiente funci\'{o}n de pertenencia:
+$$\mu_{\overline{A}}(x)=1-\mu_{A}(x)$$
+
+\subsection{Verificaci\'{o}n de Propiedades}
+\begin{enumerate}
+\item $\overline{(A\cup B)}= A \cup B$ \\
+
+\textbf{Utiliando los conectivos l\'{o}gicos $\vee = POR(x,y)$ y $\wedge = PAND(x,y)$:}
+
+$\begin{array} {lll} A \cup B & = & \mu_{A}(x) \vee \mu_{B}(x) \\ 
+& = & POR(\mu_{A}(x), \mu_{B}(x)) \\ & = &\mu_{A}(x) + \mu_{B}(x) - \mu_{A}(x)\mu_{B}(x)\end{array}$\\
+
+$\begin{array} {lll} \overline{(A \cup B)} & = & 1 - (\mu_{A}(x) + \mu_{B}(x) - \mu_{A}(x)\mu_{B}(x)) \\ &= & 1 - \mu_{A}(x) - \mu_{B}(x) + \mu_{A}(x)\mu_{B}(x)  \end{array}$\\
+
+
+
+$\begin{array} {lll} \overline{A} & = & 1 - \mu_{A}(x)  \end{array}$\\
+
+$\begin{array} {lll} \overline{B} & = & 1 - \mu_{B}(x)  \end{array}$\\
+
+$\begin{array} {lll} \overline{(A)} \cup \overline{(B)} & = & (1 - \mu_{A}(x)) \wedge (1-\mu_{B}(x))  \\ &= &PAND((1 - \mu_{A}(x)) ,(1-\mu_{B}(x)) ) \\ &= & (1 - \mu_{A}(x)) (1- \mu_{B}(x)) \\ &= & 1  - \mu_{A}(x) - \mu_{B}(x) + \mu_{A}(x)\mu_{B}(x)  \end{array}$\\
+
+Por lo tanto, se demuestra que  $\overline{(A\cup B)}= A \cup B$, usando el conectivo l\'{o}gico $POR(x,y)$ y $PAND(x,y)$.\\
+
+
+\textbf{Utiliando los conectivos l\'{o}gicos $\vee= LOR(x,y)$ y $\wedge=LAND(x,y)$:}
+
+$\begin{array} {lll} A \cup B & = & \mu_{A}(x) \vee \mu_{B}(x) \\ 
+& = & LOR(\mu_{A}(x), \mu_{B}(x)) \\ & = &min(\mu_{A}(x) + \mu_{B}(x), 1)\end{array}$\\
+
+$\begin{array} {lll} \overline{(A \cup B)} & = & 1 - ( min(\mu_{A}(x) + \mu_{B}(x) ,1  ) \end{array}$\\
+
+$\begin{array} {lll} \overline{A} & = & 1 - \mu_{A}(x)  \end{array}$\\
+
+$\begin{array} {lll} \overline{B} & = & 1 - \mu_{B}(x)  \end{array}$\\
+
+
+$\begin{array} {lll} \overline{(A)} \cup \overline{(B)} & = & (1 - \mu_{A}(x)) \wedge (1-\mu_{B}(x))  \\ &= &LAND((1 - \mu_{A}(x)) ,(1-\mu_{B}(x)) ) \\ 
+&= & max(1 - \mu_{A}(x) + 1 - \mu_{B}(x) -1, 0) \\ 
+&= & max[1 - (\mu_{A}(x) + \mu_{B}(x)) , 0] \end{array}$\\
+
+\begin{itemize}
+\item \textbf{Caso 1}
+
+$\mu_{A}(x) + \mu_{B}(x) \geq 1 \equiv 1 - (\mu_{A}(x) + \mu_{B}(x)) \leq 0 \equiv 1 \leq \mu_{A}(x) + \mu_{B}(x)$\\
+
+$\overline{(A \cup B)} = 1-min(\mu_{A}(x) + \mu_{B}(x), 1) = 1 -1$\\
+
+$\overline{(A)} \cup \overline{(B)}= max[1 - (\mu_{A}(x) + \mu_{B}(x)) , 0]  =0, \ \ \ \text{ debido a que } 1 - (\mu_{A}(x) + \mu_{B}(x))$ es siempre negativo.
+
+
+
+
+\item \textbf{Caso 2}
+
+$(\mu_{A}(x) + \mu_{B}(x)) < 1$\\
+
+
+$\overline{(A \cup B)} = 1-\mu_{A}(x) - \mu_{B}(x)$\\
+
+$\overline{(A)} \cup \overline{(B)}= 1 - \mu_{A}(x) - \mu_{B}(x)$  debido a que $1 - (\mu_{A}(x) + \mu_{B}(x)$ es positivo.
+
+\end{itemize}
+
+
+
+Por lo tanto, se demuestra que  $\overline{(A\cup B)}= A \cup B$, usando el
+conectivo l\'{o}gico $LOR(x,y)$ y $LAND(x,y)$.\\
+
+
+\item $A \cup(B \cap C)= (A \cup B) \cap (A \cup C)$
+
+\textbf{Utiliando los conectivos l\'{o}gicos $\vee= POR(x,y)$ y $\wedge=PAND(x,y)$:}
+
+$\begin{array} {lll} A \cup (B \cap C) & = & POR(\mu_{A}(x),PAND(\mu_{B}(x),\mu_{C}(x)) \\ 
+& = & POR(\mu_{A}(x), \mu_{B}(x) \mu_{C}(x)) \\ & = & \mu_{A}(x) + \mu_{B}(x) \mu_{C}(x) - \mu_{A}(x)\mu_{B}(x)\mu_{C}(x), 1)\end{array}$\\
+
+$\begin{array} {lll} (A \cup B) \cap (A \cup C) & = & POR(\mu_{A}(x), \mu_{B}(x)) \vee POR(\mu_{A}(x),\mu_{C}(x)) \\ 
+& = & PAND(POR(\mu_{A}(x), \mu_{B}(x)), POR(\mu_{A}(x), \mu_{C}(x)) \\ 
+& = & PAND(\mu_{A}(x) + \mu_{B}(x) -\mu_{A}(x)\mu_{B}(x), \mu_{A}(x)\mu_{C}(x)-\mu_{A}(x)\mu_{C}(x))\\
+& = & (\mu_{A}(x) + \mu_{B}(x) -\mu_{A}(x)\mu_{B}(x))  (\mu_{A}(x)\mu_{C}(x)-\mu_{A}(x)\mu_{C}(x))
+\end{array}$\\
+
+Si se toman los sgtes. valores para $\mu_{A}(x)=0.3, \mu_{B}(x)=0.2 $ y $\mu_{C}(x)=0.5$
+
+$\begin{array} {lll} A \cup (B \cap C) & = & 0.3 + 0.2 +0.5 - 0.3\times  0.2 \times 0.5  \\ 
+& = & 0.97\end{array}$\\
+
+y por el otro lado:
+
+
+
+\item $A \cup A = X$
+\item $A A= $
+\end{enumerate}
+
+\section{Relaciones Fuzzy}
+Sean $R$ y $S$ relaciones fuzzy de $X$ en $Y$. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mandani.
+
+\begin{itemize}
+\item $(R \cup S )^{-1} = R^{-1} \cup S^{-1}$\\
+$R,S$ relaciones fuzzy en $X\times Y$\\
+$(R\cup S)^{-1}$ relaci\'{o}n fuzzy en $Y\times X$\\
+$R^{-1}\cup S^{-1}$ relaci\'{o}n fuzzy en $Y\times X$
+
+
+
+$\begin{array}{l l l}\\
+(R \cup S ) &= &\mu_{R}(x,y) \vee \mu_{s}(x,y)\\
+ &= &max\{\mu_{R}(x,y),\mu_{s}(x,y)\}\\
+(R \cup S )^{-1} &= & \mu_{(R\cup S)^{-1}}\textcolor{blue}{(y,x)} = \mu_{R\cup S}(x,y)\\
+\end{array}$
+
+Por el otro lado:\\
+
+$\begin{array}{l l l}\\
+R^{-1} &= &\mu_{R^{-1}}(y,x)\\
+S^{-1} &= &\mu_{S^{-1}}(y,x)\\
+R^{-1} \cup S^{-1}  &= &max\{\mu_{R^{-1}}(y,x),\mu_{S^{-1}}(y,x)\}\\
+ &= & max\{\mu_{R}(x,y),\mu_{s}(x,y)\}
+\end{array}$
+
+Por lo tanto, ambos lados son iguales a $max\{\mu_{R}(x,y),\mu_{s}(x,y)\}$, lo
+que implica que $(R \cup S )^{-1} = R^{-1} \cup S^{-1}$.
+
+\item 
+
+\end{itemize}
+
+\section{B}
+ Sean $A$, $A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de $X$ en $Y$ y $S$, $T$ relaciones Fuzzy de $Y$ en $Z$. Verificar que:
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{simple}
+
+\end{document}
+This is never printed

@@ -1,0 +1,133 @@
+\documentclass[10pt, conference, compsocconf]{IEEEtranBST/IEEEtran}
+\usepackage[cmex10]{amsmath}
+\usepackage{amsfonts}
+\usepackage{txfonts}
+\usepackage{graphicx}
+%\usepackage[latin 1]{input enc}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{pgf}
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{color}
+%\usepackage[centertags]{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{mathrsfs}
+%\usepackage{pstricks}
+%\usepackage{fancyvrb}
+%\usepackage[spanish, english]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage{tabularx}
+%\usepackage{supertabular}
+%\usepackage{gensymb}
+%\usepackage{esvect}
+%\usepackage{pgf}
+
+
+
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\red}{\textcolor{red}}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\pgfdeclareimage[width=7cm]{ihc1}{img/resultado1}
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Tarea N° 1}
+
+
+% author names and affiliations
+% use a multiple column layout for up to two different
+% affiliations
+
+\author{\IEEEauthorblockN{Raquel Pezoa}
+\IEEEauthorblockA{\\Departamento de Inform\'{a}tica\\ Universidad T\'ecnica Federico Santa Mar\'ia, (UTFSM)\\
+Valpara\'iso, Chile\\
+\\ Email: raquel.pezoa@usm.cl }
+}
+
+
+% make the title area
+\maketitle
+
+
+\IEEEpeerreviewmaketitle
+
+
+\begin{enumerate}
+\item \textbf{t-norma}
+Verificar que los operadores PAND (t-norm probabilistic) y LAND (t-norm de Lukasiewics) cumplen las propiedades t-norma.\\
+
+Let $X$ denotes the universal set. A fuzzy set $A$ is defined by a membership function $\mu_{A}:x \rightarrow [0,1]$ that describes the membership degree of the elements in X. Values of $\mu_{A}$ closer to 1 denote higher degree of membership. Therefore, the degree in which the statement \emph{$x$ is in $A$} is true is determined by the ordered pair $(x,\mu_{A}(x)$.
+
+Fundamental operations used in classical set theory, like intersections and unions, are modeled in fuzzy logic by triangular norms and triangular conorms, respectively. Intersections are modeled using triangular norms (t-norms). A t-norm based intersection corresponds to the mapping $T:[0,1] \times [0,1] \rightarrow [0,1]$ and has been extensively used to model the logical connective \emph{and}.
+Meanwhile, triangular conorms (s-norms), given by the mapping $S:[0,1] \times [0,1] \rightarrow [0,1]$, are used to model the logical connective \emph{or}.
+
+Any t-norm must satisfy the properties:
+\begin{itemize}
+\item Simmetry: $T(x,y)=T(y,x)$
+\item Associativity: $T(x,T(y,z))=T(T(x,y),z)$
+\item Monotonicity: $T(x,y) \leq T(x',y')$ if $x\leq x'$ and $y\leq y'$
+\item One identitiy: $T(x,1)=x$
+\end{itemize}
+$\forall \ x,x',y,y',z \in [0,1]$
+
+\begin{enumerate}
+\item $PAND(x,y)=xy$
+\begin{itemize}
+\item Simmetry:
+$PAND(x,y)=PAND(y,x)?$
+
+$PAND(x,y)=xy$ , con $x,y \in [0,1]$ y por propiedad conmutativa de la multipliacación $xy=yx=PAND(y,x)$, por lo tanto, $PAND(x,y)=PAND(y,x)$
+
+\item Associativity 
+$PAND(x,PAND(y,z))=PAND(PAND(x,y),z)$
+
+$PAND(x,PAND(y,z))=PAND(x,yz)=x(yz)$,  con $x,y,y \in [0,1]$ y por propiedad asociativa de la multiplicación se tiene que $x(yz) = (xy)z$, por lo tanto $x(yz)=(xy)z=PAND(PAND(x,y),z)$
+
+\item Monotonocity
+$PAND(x,y) \leq PAND(x',y')$ if $x\leq x'$ and $y\leq y'$
+
+$xy \leq x'y'$
+
+\end{itemize}
+\item $LAND(x,y)=max(x+y-1,0)$
+\end{enumerate}
+
+
+\item s-norma
+Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de Lukasiewics) cumplen las propiedades s-norma.
+
+
+Any s-norm must satisfy the properties:
+\begin{itemize}
+\item Simmetry: $S(x,y)=S(y,x)$
+\item Associativity: $S(x,S(y,z))=S(S(x,y),z)$
+\item Monotonicity: $S(x,y) \leq S(x',y')$ if $x\leq x'$ and $y\leq y'$
+\item Zero identitiy: $S(x,0)=x$
+\end{itemize}
+$\forall \ x,x',y,y',z \in [0,1]$
+
+$$POR(x,y)=x+y-xy$$
+$$LOR(x,y)=min(x+y,1)$$
+
+\item Propiedades Fuzzy Sets
+Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-norm y s-norm anteriores; en caso de no ser v\'{a}lida la propiedad mostrar con un contraejemplo.
+$$(A B)= A B$$
+$$A (B C)= (A B)(A C)$$
+$$A A = X$$
+$$A A= $$
+
+\item Relaciones Fuzzy
+Sean $R$ y $S$ relaciones fuzzy de $X$ en $Y$. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mandani.
+
+\item Sean $A$, $A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de $X$ en $Y$ y $S$, $T$ relaciones Fuzzy de $Y$ en $Z$. Verificar que:
+
+\end{enumerate}
+\end{document}
+
+

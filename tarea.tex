@@ -420,7 +420,7 @@ y por el otro lado:
 \section{Relaciones Fuzzy}
 Sean $R$ y $S$ relaciones fuzzy de $X$ en $Y$. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mandani.
 
-\begin{itemize}
+\begin{enumerate}
 \item $(R \cup S )^{-1} = R^{-1} \cup S^{-1}$\\
 $R,S$ relaciones fuzzy en $X\times Y$\\
 $(R\cup S)^{-1}$ relaci\'{o}n fuzzy en $Y\times X$\\
@@ -446,14 +446,83 @@ R^{-1} \cup S^{-1}  &= &max\{\mu_{R^{-1}}(y,x),\mu_{S^{-1}}(y,x)\}\\
 Por lo tanto, ambos lados son iguales a $max\{\mu_{R}(x,y),\mu_{s}(x,y)\}$, lo
 que implica que $(R \cup S )^{-1} = R^{-1} \cup S^{-1}$.
 
-\item 
-
-\end{itemize}
-
-\section{B}
- Sean $A$, $A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de $X$ en $Y$ y $S$, $T$ relaciones Fuzzy de $Y$ en $Z$. Verificar que:
+\item $\overline{(R^{-1})} = (\overline{R})^{-1}$
 
 
+$(\overline{R^{-1}})$ es una relaci\'{o}n fuzzy en $Y\times X$\\
+$(\overline{R})^{-1}$ es una relaci\'{o}n fuzzy en $Y\times X$\\
+
+$\begin{array}{l l l }\\
+ R^{-1} &= &\mu_{R^{-1}}(y,x)\\
+ &= &\mu_{R}(x,y) \\
+(\overline{R^{-1}}) &= & 1- \mu_{R^{-1}}(y,x) \\
+ &= & \mu_{R}(x,y)\\
+\end{array}$\\
+Por el otro lado se tiene:
+
+$\begin{array}{l l l }\\
+ \overline{R} &= &1-\mu_{R(x,y)}\\
+ &= &\mu_{R}(x,y) \\
+(\overline{R})^{-1} &= & 1- \mu_{R^{-1}}(y,x) \\
+ &= & 1- \mu_{R}(x,y)
+\end{array}$\\
+
+
+Por lo tanto, ambos lados son iguales a 1- $\mu_{R}(x,y)$, lo
+que implica que $\overline{(R^{-1})} = (\overline{R})^{-1}$.
+
+\end{enumerate}
+
+\section{Composici\'{o}n de Relaciones}
+Sean $A$, $A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de $X$ en $Y$ y
+$S$, $T$ relaciones Fuzzy de $Y$ en $Z$. Verificar que:
+
+\begin{enumerate}
+\item $(R\circ S)^{-1} = R^{-1}\circ S^{-1}$
+$R$ relaci\'{o}n fuzzy en $X\times Y$\\
+$S$ relaci\'{o}n fuzzy en $Y\times Z$\\
+
+
+$\begin{array}{l l l }\\
+R \circ S &= &\mu_{ R \circ S}(x,z)\\
+ &= & \max_{y\in Y} \{\mu_{R}(x,y) \wedge \mu_{S}(y,z) \}\\
+\end{array}$\\
+
+$\begin{array}{l l l }\\
+(R\circ S)^{-1} &= &\mu_{(R\circ S)^{-1}}(z,x)\\
+ &= & \max_{y\in Y} \{\mu_{R}(x,y) \wedge \mu_{S}(y,z) \}\\
+\end{array}$\\
+
+Por el otro lado se tiene:\\
+$\begin{array}{l l l}\\
+R^{-1} &= &\mu_{R^{-1}}(y,x)\\
+S^{-1} &= &\mu_{S^{-1}}(y,x)\\
+R^{-1} \circ S^{-1}  &= &\max_{y\in Y}\{\mu_{R^{-1}}(y,x),\mu_{S^{-1}}(z,y)\}\\
+ &= & \max_{y\in  Y}\{\mu_{R}(x,y),\mu_{s}(y,z)\}
+\end{array}$
+
+Por lo tanto, ambos lados son iguales a $\max_{y\in  Y}\{\mu_{R}(x,y),\mu_{s}(y,z)\}$ , lo
+que implica que\\ $(R\circ S)^{-1} = R^{-1}\circ S^{-1}$.
+
+\item $R \circ S  \neq S \circ R$
+
+La relaci\'{o}n fuzzy $R$ est\'{a} definida en $X\times Y$ y la relaci\'{o}n fuzzy $S$
+est\'{a} definida en $Y\times Z$.
+
+Por definici\'{o}n, la composici\'{o}n de las relaciones fuzzy $R$ y $S$ es $$\mu_{R\circ S} = \max_{y \in
+Y}\{\mu_{R}(x,y) \wedge \mu_{S}(y,z) \},$$ la cual est\'{a} definida en $X\times Z$, para lo
+cual $R$ y $S$ deben tener un conjunto fuzzy en com\'{u}n: $Y$.
+
+Por otro lado, la composici\'{o}n de las relaciones fuzzy $S$ y $R$ est\'{a} definida por
+$$\mu_{S\circ R} = \max_{y \in Y}\{\mu_{S}(y,z) \wedge \mu_{R}(x,y) \}$$
+
+la cual presenta el problema que $R$ y $S$ no comparten un conjunto fuzzy en
+com\'{u}n, por lo tanto, aquella composici\'{o}n, no est\'{a} bien definida.
+As\'{i}, queda demostrado que $R \circ S  \neq S \circ R$.
+
+\item $S \subseteq T \Rightarrow R \circ S  \subseteq R \circ T$
+
+\end{enumerate}
 
 \bibliographystyle{abbrv}
 \bibliography{simple}

@@ -1,4 +1,4 @@
-\title{Tarea 1}
+\title{Tarea 1  INF-576\\ Inferencia de Conocimiento en Sistemas de Informaci\'{o}n}
 \author{
         Raquel Pezoa \\
                 Departamento de Inform\'{a}tica\\
@@ -26,8 +26,8 @@
 
 
 \section{Operador t-norma}
-Verificar que los operadores $PAND$ (t-norma probabil\'{i}stica) y $LAND$ (t-norma
-de Lukasiewics) cumplen las propiedades de una t-norma.\\
+\emph{Verificar que los operadores $PAND$ (t-norma probabil\'{i}stica) y $LAND$ (t-norma
+de Lukasiewics) cumplen las propiedades de una t-norma.}\\
 
 Sea $X$ el conjunto universo. Sea $A$ el conjunto fuzzy definido por la funci\'{o}n
 de pertenencia $\mu_{A}:x \rightarrow [0,1]$ que describe el
@@ -188,7 +188,8 @@ $PAND(1,x)=1\times x, \ x \in [0,1]$, y por propiedad de identidad de la multipl
 \end{enumerate}
 
 \section{s-norma}
-Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de Lukasiewics) cumplen las propiedades s-norma.
+\emph{Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de
+Lukasiewics) cumplen las propiedades s-norma}.\\
 
 La s-norma corresponde a la transformaci\'{o}n $T:[0,1] \times [0,1]
 \rightarrow [0,1]$, y ha sido usada para modelar el conectivo l\'{o}gico $OR$.
@@ -272,6 +273,28 @@ $LOR(x,y)=min(x+y,1)$ , $\ \ x,y \in [0,1]$ y por propiedad conmutativa de la su
 
 \item Por demostrar, asociatividad: $LOR(x,LOR(y,z))=LOR(LOR(x,y),z)$
 
+\begin{proof}
+$\begin{array}{lll}
+LOR(x,LOR(y,z)) &= &min(x+min(y+z,1),1)\\
+LOR(LOR(x,y),z) &= & min(min(x+y,1)+z,1) \\ 
+\end{array}$
+
+Por lo tanto se debe demostrar que $min(x+min(y+z,1),1)=min(min(x+y,1)+z,1)$
+\[\qedhere\]
+
+\textbf{Caso 1:}  $(y+z \geq 1) \wedge (x+y \geq 1)$.
+
+$LOR(x,LOR(y,z)) = min (x+ \min(y+z,1),1)= \min(x+1,1)=1$.\\
+$LOR(LOR(x,y),z) =  min(min(x+y,1)+z,1)=\min(z+1,1)=1$.
+
+\textbf{Caso 1:}  $(y+z \geq 1) \wedge (x+y < 1)$.
+
+$LOR(x,LOR(y,z)) = min (x+ \min(y+z,1),1)= \min(x+1,1)=1$.\\
+$LOR(LOR(x,y),z) =  min(min(x+y,1)+z,1)=\min(x+y+z+1,1)=1$.
+
+
+\end{proof}
+
 
 \item Por demostrar, monotonicidad: $LOR(x,y) \leq LOR(x',y')$ si $x\leq x'$ e $y\leq y'$
 
@@ -306,7 +329,9 @@ $LOR(x,0)=min(x + 0,1)=min(x,0)=x, \ x \in [0,1]$, por lo tanto, $POR(x,0)=x$.
 
 
 \section{Propiedades Fuzzy Sets}
-Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-norm y s-norm anteriores; en caso de no ser v\'{a}lida la propiedad mostrar con un contraejemplo.
+\emph{Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las
+t-norm y s-norm anteriores; en caso de no ser v\'{a}lida la propiedad mostrar
+con un contraejemplo}.
 
 \vspace{0.5cm}
 La uni\'{o}n, intersecci\'{o}n y complemeto de fuzzy sets son derivadas de operaciones de las funciones de pertenencia.
@@ -418,7 +443,8 @@ y por el otro lado:
 \end{enumerate}
 
 \section{Relaciones Fuzzy}
-Sean $R$ y $S$ relaciones fuzzy de $X$ en $Y$. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mandani.
+\emph{Sean $R$ y $S$ relaciones fuzzy de $X$ en $Y$. Verificar que las relaciones
+Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mandani.}
 
 \begin{enumerate}
 \item $(R \cup S )^{-1} = R^{-1} \cup S^{-1}$\\
@@ -522,7 +548,57 @@ As\'{i}, queda demostrado que $R \circ S  \neq S \circ R$.
 
 \item $S \subseteq T \Rightarrow R \circ S  \subseteq R \circ T$
 
+La inclusi\'{o}n de relaciones fuzzy $R$ y $S$ en $X\times Y$ de define
+mediante la funci\'{o}n de pertenencia:
+$$R \subseteq S \Leftrightarrow \mu_{R}(x,y) \leq \mu_{s}(x,y) \ \ \forall x \in X \ \ \forall y \in Y$$
+Por lo tanto;\\
+
+$\begin{array}{lll}\\
+S \subseteq T &\Leftrightarrow & \mu_{S}(y,z) \leq \mu_{T}(y,z) \ \forall  x \in X \ \ \forall z \in Z \\
+\end{array}$
+
+$\begin{array}{lll}
+R \circ S \subseteq R\circ T &\Leftrightarrow &\mu_{R\circ S}(x,z) \leq \mu_{R\circ T}(x,z) \ \forall  x \in X \ \ \forall y \in Y \\ 
+ &\Leftrightarrow & \max_{y \in Y}\{ \mu_{R}(x,y) \wedge \mu_{S}(y,z) \} \leq \max_{y \in Y}\{ \mu_{R}(x,y) \wedge \mu_{T}(y,z) \}
+\end{array}$
+
+Se debe demostrar:\\
+
+$\begin{array}{lll}
+\mu_{S}(y,z) \leq \mu_{T}(y,z) &\Rightarrow &\max_{y \in Y}\{ \mu_{R}(x,y) \wedge \mu_{S}(y,z) \} \leq \max_{y \in Y}\{ \mu_{R}(x,y) \wedge \mu_{T}(y,z)\} \\
+&\Rightarrow & \max_{y \in Y}\{ \min\{\mu_{R}(x,y),\mu_{S}(y,z)\} \} \leq \max_{y\in Y}{\{\min\{y \in Y}\{ \mu_{R}(x,y),\mu_{T}(y,z)\}\}
+\end{array}$
+
+Si $\mu_{R}(x,y) \geq \mu_{S}(y,z) \wedge \mu_{R}(x,y) \geq \mu_{T}(y,z)$:
+
+$\begin{array}{lll} 
+\max_{y\in Y}\{\min\{\mu_{R}(x,y),\mu_{S}(y,z)\}\} &= &\max_{y\in Y}\{\mu_{S}(y,z)\}\\
+\max_{y\in Y}\{\min\{ \mu_{R}(x,y),\mu_{T}(y,z)\}\} &= &\max_{y\in Y}\{\mu_{T}(y,z)\}\\
+\end{array}$\\
+$\Rightarrow \max_{y\in Y}\{\mu_{S}(y,z)\} \leq \max\{\mu_{T}(y,z)\}$
+
+
+Si $\mu_{R}(x,y) \geq \mu_{S}(y,z) \wedge \mu_{R}(x,y) < \mu_{T}(y,z)$:
+
+$\begin{array}{lll} 
+\max_{y\in Y}\{\min\{\mu_{R}(x,y),\mu_{S}(y,z)\}\} &= &\max_{y\in Y}\{\mu_{S}(y,z)\}\\
+\max_{y\in Y}\{\min\{ \mu_{R}(x,y),\mu_{T}(y,z)\}\} &= &\max_{y\in Y}\{\mu_{R}(x,y)\}\\
+\end{array}$\\
+$\Rightarrow \max_{y\in Y}\{\mu_{S}(y,z)\} \leq \max\{\mu_{R}(x,y)\}$
+
+
+Si $\mu_{R}(x,y) < \mu_{S}(y,z) \wedge \mu_{R}(x,y)  <  \mu_{T}(y,z)$:
+
+$\begin{array}{lll} 
+\max_{y\in Y}\{\min\{\mu_{R}(x,y),\mu_{S}(y,z)\}\} &= &\max_{y\in Y}\{\mu_{R}(x,y)\}\\
+\max_{y\in Y}\{\min\{ \mu_{R}(x,y),\mu_{T}(y,z)\}\} &= &\max_{y\in Y}\{\mu_{R}(x,y)\}\\
+\end{array}$\\
+$\Rightarrow \max_{y\in Y}\{\mu_{R}(x,y)\} \leq \max\{\mu_{R}(x,y)\}$
+
+Para los casos posibles, se demostr\'{o} que si $\mu_{S}(y,z) \leq \mu_{T}(y,z) \Rightarrow \max_{y \in Y}\{ \mu_{R}(x,y) \wedge \mu_{S}(y,z) \} \leq \max_{y \in Y}\{ \mu_{R}(x,y) \wedge \mu_{T}(y,z)\}$.\\
+
 \end{enumerate}
+
 
 \bibliographystyle{abbrv}
 \bibliography{simple}
